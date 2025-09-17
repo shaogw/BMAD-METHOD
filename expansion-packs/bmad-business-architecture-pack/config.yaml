@@ -1,0 +1,11 @@
+# <!-- Powered by BMAD™ Core -->
+name: bmad-business-architecture-pack
+version: 1.0.0
+short-title: Business Architecture Discovery Lab
+description: >-
+  Upstream business architecture discovery kit that maps value streams, capabilities,
+  information structures, and opportunity hypotheses before product planning. Includes
+  eight specialized agents, executable tasks, maturity scales, and workflows tuned for
+  construction and complex enterprise domains.
+author: BMAD Contributors
+slashPrefix: bmad-ba

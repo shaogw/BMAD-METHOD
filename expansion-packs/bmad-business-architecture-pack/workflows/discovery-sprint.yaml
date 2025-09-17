@@ -1,0 +1,154 @@
+# <!-- Powered by BMAD™ Core -->
+# workflows/discovery-sprint.yaml
+name: discovery-sprint
+title: Business Architecture Discovery Sprint
+description: |
+  Ten-step workflow that orchestrates domain research, value flow mapping, capability
+  assessment, information modeling, and opportunity synthesis prior to Analyst Agent
+  briefing.
+
+triggers:
+  - command: /bmad-ba
+  - intent: "run business architecture discovery"
+
+inputs:
+  - engagement_brief
+  - stakeholder_list
+  - existing_artifacts
+
+agents:
+  - domain-discovery
+  - value-stream
+  - capability-map
+  - business-use-case
+  - information-structure
+  - glossary
+  - problem-analysis
+  - value-proposition
+
+steps:
+  - id: kickoff_scoping
+    title: Frame discovery scope and research backlog
+    agent: domain-discovery
+    uses: tasks/domain-research-plan.md
+    outputs:
+      - discovery-plan
+      - research-backlog
+
+  - id: source_triangulation
+    title: Triangulate sources and draft concept model
+    agent: domain-discovery
+    inputs:
+      - discovery-plan
+      - existing_artifacts
+    uses: tasks/source-triangulation.md
+    outputs:
+      - domain-scan
+      - concept-model
+
+  - id: value_stream_mapping
+    title: Map priority value streams and information flows
+    agent: value-stream
+    inputs:
+      - domain-scan
+      - stakeholder_list
+    uses: tasks/value-stream-interview-guide.md
+    outputs:
+      - value-stream-map
+      - information-flows
+
+  - id: capability_alignment
+    title: Derive capabilities and assess maturity
+    agent: capability-map
+    inputs:
+      - value-stream-map
+      - information-flows
+    uses: tasks/capability-assessment-workshop.md
+    outputs:
+      - capability-map
+      - capability-heatmap
+      - capability-recommendations
+
+  - id: use_case_catalog
+    title: Translate flows into business use cases
+    agent: business-use-case
+    inputs:
+      - value-stream-map
+      - capability-map
+    uses: tasks/use-case-framing.md
+    outputs:
+      - business-use-cases
+      - traceability-matrix
+
+  - id: information_modeling
+    title: Build information model and stewardship matrix
+    agent: information-structure
+    inputs:
+      - business-use-cases
+      - information-flows
+    uses: tasks/information-model-clinic.md
+    outputs:
+      - information-model
+      - lifecycle-maps
+      - stewardship-matrix
+
+  - id: glossary_alignment
+    title: Consolidate glossary, roles, and document taxonomy
+    agent: glossary
+    inputs:
+      - domain-scan
+      - information-model
+    uses: tasks/glossary-sprint.md
+    outputs:
+      - glossary
+      - role-catalog
+      - document-types
+
+  - id: problem_synthesis
+    title: Build problem register and impact assessment
+    agent: problem-analysis
+    inputs:
+      - value-stream-map
+      - capability-heatmap
+      - business-use-cases
+    uses: tasks/problem-priority-matrix.md
+    outputs:
+      - problem-register
+      - impact-assessment
+      - evidence-pack
+
+  - id: opportunity_workshop
+    title: Synthesize value opportunities and hypotheses
+    agent: value-proposition
+    inputs:
+      - problem-register
+      - impact-assessment
+      - role-catalog
+    uses: tasks/value-proposition-workshop.md
+    outputs:
+      - value-opportunity-canvas
+      - value-hypotheses
+      - recommendation-brief
+
+  - id: analyst_handoff
+    title: Prepare analyst hand-off package
+    agent: value-proposition
+    inputs:
+      - recommendation-brief
+      - capability-recommendations
+      - traceability-matrix
+    uses: docs/analyst-handoff-guide.md
+    outputs:
+      - analyst-handoff-summary
+
+outputs:
+  - discovery-plan
+  - domain-scan
+  - value-stream-map
+  - capability-map
+  - business-use-cases
+  - information-model
+  - glossary
+  - problem-register
+  - value-opportunity-canvas
+  - analyst-handoff-summary

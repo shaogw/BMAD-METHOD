@@ -1,0 +1,51 @@
+# <!-- Powered by BMAD™ Core -->
+# Business Use Case Template
+
+use_cases:
+  - id: BA-UC-001
+    name: TBD
+    primary_actor: TBD
+    stakeholders:
+      - TBD
+    trigger: TBD
+    preconditions:
+      - TBD
+    main_flow:
+      - step: 1
+        description: TBD
+        data: TBD
+        system: TBD
+      - step: 2
+        description: TBD
+        data: TBD
+        system: TBD
+    alternate_flows:
+      - scenario: TBD
+        steps:
+          - step: 1
+            description: TBD
+            notes: TBD
+    exception_flows:
+      - scenario: TBD
+        steps:
+          - step: 1
+            description: TBD
+            recovery: TBD
+    postconditions:
+      - TBD
+    success_metrics:
+      - metric: TBD
+        target: TBD
+    linked_capabilities:
+      - capability_id: TBD
+        name: TBD
+    key_data_objects:
+      - entity: TBD
+        usage: Create|Read|Update|Delete
+    notes: TBD
+
+traceability_matrix:
+  - use_case_id: BA-UC-001
+    capability_id: TBD
+    data_object: TBD
+    supporting_metric: TBD

@@ -1,0 +1,31 @@
+# <!-- Powered by BMAD™ Core -->
+# Problem Register Template
+
+problems:
+  - id: PR-001
+    category: Management|Information|Efficiency|Compliance|Experience
+    description: TBD
+    symptoms:
+      - TBD
+    root_cause_hypothesis: TBD
+    impacted_capabilities:
+      - capability_id: TBD
+        name: TBD
+    impacted_roles:
+      - role: TBD
+    related_data_objects:
+      - entity: TBD
+    evidence_refs:
+      - source: TBD
+        note: TBD
+    priority: High|Medium|Low
+    status: New|Analyzing|Validated|Resolved
+
+impact_assessment:
+  - problem_id: PR-001
+    severity: High|Medium|Low
+    frequency: High|Medium|Low
+    business_value_loss: TBD
+    quick_win_potential: High|Medium|Low
+    recommended_action_owner: TBD
+    target_timeline: TBD

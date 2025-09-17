@@ -1,0 +1,32 @@
+# <!-- Powered by BMAD™ Core -->
+# Glossary Template
+
+terms:
+  - term: TBD
+    definition: TBD
+    category: Role|Document|Metric|Process|System|Data
+    synonyms:
+      - TBD
+    related_terms:
+      - TBD
+    source: TBD
+    notes: TBD
+
+role_catalog:
+  - role: TBD
+    description: TBD
+    key_responsibilities:
+      - TBD
+    decision_rights: TBD
+    information_needs:
+      - TBD
+    pain_points:
+      - TBD
+
+document_types:
+  - name: TBD
+    purpose: TBD
+    owner: TBD
+    frequency: TBD
+    retention: TBD
+    regulatory_basis: TBD
