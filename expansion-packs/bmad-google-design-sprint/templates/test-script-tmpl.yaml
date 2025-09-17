@@ -1,0 +1,51 @@
+# <!-- Powered by BMAD™ Core -->
+---
+template:
+  id: test-script
+  name: Usability Test Script Template
+  version: 1.0
+  description: Full moderation guide for Friday test sessions.
+  output:
+    format: markdown
+    filename: "user-test-script.md"
+
+workflow:
+  elicitation: true
+  allow_skip: false
+
+sections:
+  - id: session_info
+    title: Session Info
+    instruction: |
+      Capture participant ID, date, moderator, note taker, and session goals.
+    elicit: true
+  - id: intro
+    title: Intro & Consent
+    instruction: |
+      Draft welcome script, confidentiality reminders, and consent confirmation.
+    elicit: true
+  - id: warmup
+    title: Warm-Up Questions
+    instruction: |
+      List warm-up questions establishing context and rapport.
+    elicit: true
+  - id: background
+    title: Background & Behaviors
+    instruction: |
+      Capture questions exploring prior experiences and current solutions.
+    elicit: true
+  - id: tasks
+    title: Core Tasks
+    instruction: |
+      Detail each task scenario with success criteria, observation cues, and probes.
+    elicit: true
+  - id: wrapup
+    title: Wrap-Up Questions
+    instruction: |
+      Document debrief questions, recommendation prompts, and closing script.
+    elicit: true
+  - id: logistics
+    title: Logistics & Notes
+    instruction: |
+      Note timing, handoff, highlight reels, and follow-up items.
+    elicit: true

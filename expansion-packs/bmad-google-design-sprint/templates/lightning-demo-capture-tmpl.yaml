@@ -1,0 +1,36 @@
+# <!-- Powered by BMAD™ Core -->
+---
+template:
+  id: lightning-demo-capture
+  name: Lightning Demo Capture Template
+  version: 1.0
+  description: Capture format for lightning demo sources, wow moments, and remix ideas.
+  output:
+    format: markdown
+    filename: "lightning-demo-{{category | default('roundup')}}.md"
+
+workflow:
+  elicitation: true
+  allow_skip: false
+
+sections:
+  - id: source_overview
+    title: Source Overview
+    instruction: |
+      Describe the product/service, platform, and why it is relevant to the sprint challenge.
+    elicit: true
+  - id: wow_moments
+    title: Wow Moments
+    instruction: |
+      Capture the three most interesting moments or features, explaining the value behind each.
+    elicit: true
+  - id: takeaways
+    title: Takeaways & Borrowable Ideas
+    instruction: |
+      Translate inspiration into specific principles or design moves we can apply.
+    elicit: true
+  - id: open_questions
+    title: Open Questions
+    instruction: |
+      Note uncertainties, risks, or questions that surfaced while reviewing this demo.
+    elicit: true

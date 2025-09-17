@@ -1,0 +1,46 @@
+# <!-- Powered by BMAD™ Core -->
+---
+template:
+  id: expert-interview-notes
+  name: Expert Interview Notes Template
+  version: 1.0
+  description: Structured capture for expert interviews including insights and HMW statements.
+  output:
+    format: markdown
+    filename: "expert-interview-{{expert_name | default('notes')}}.md"
+
+workflow:
+  elicitation: true
+  allow_skip: false
+
+sections:
+  - id: session_meta
+    title: Session Metadata
+    instruction: |
+      Record expert name, role, date, and interview goals.
+    elicit: true
+  - id: warmup
+    title: Warm-Up & Rapport
+    instruction: |
+      Note introductory questions, rapport-building insights, and context-setting details.
+    elicit: true
+  - id: core_topics
+    title: Core Topics
+    instruction: |
+      Capture key quotes, facts, and observations aligned to planned topics. Include rationale for why each point matters to the sprint.
+    elicit: true
+  - id: surprises
+    title: Surprises & Contradictions
+    instruction: |
+      Document unexpected findings, tensions, or contradictions that emerged.
+    elicit: true
+  - id: hmw
+    title: How Might We Statements
+    instruction: |
+      Translate insights into How Might We statements. Include trigger insight for each.
+    elicit: true
+  - id: followups
+    title: Follow-Ups
+    instruction: |
+      List outstanding questions, additional experts to contact, and assets to collect.
+    elicit: true

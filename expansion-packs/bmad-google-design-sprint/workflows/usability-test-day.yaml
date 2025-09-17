@@ -1,0 +1,65 @@
+# <!-- Powered by BMAD™ Core -->
+# workflows/usability-test-day.yaml
+name: usability-test-day
+title: Usability Test Day Orchestration
+description: |
+  Stand-alone workflow to run a full day of usability tests using the Google Design Sprint Lab testing toolkit.
+
+triggers:
+  - command: /gds-test-day
+  - intent: "run usability test day"
+
+inputs:
+  - prototype_link
+  - test_objectives
+
+agents:
+  - sprint-facilitator
+  - test-analyst
+  - product-decider
+
+steps:
+  - id: readiness_check
+    title: Run Friday readiness checklist
+    agent: sprint-facilitator
+    uses: tasks/run-day-checklist.md
+    outputs: readiness-log
+
+  - id: confirm_script
+    title: Review and finalize test script
+    agent: test-analyst
+    inputs:
+      - readiness-log
+      - test_objectives
+    uses: tasks/user-test-script.md
+    outputs: user-test-script
+
+  - id: schedule_sync
+    title: Confirm participant schedule
+    agent: sprint-facilitator
+    inputs: user-test-script
+    uses: tasks/test-schedule.md
+    outputs: test-schedule
+
+  - id: run_sessions
+    title: Moderate sessions and capture observations
+    agent: test-analyst
+    inputs:
+      - prototype_link
+      - user-test-script
+      - test-schedule
+    uses: tasks/test-debrief.md
+    outputs: test-insights
+
+  - id: decision_review
+    title: Review findings and decide next steps
+    agent: product-decider
+    inputs: test-insights
+    uses: tasks/post-sprint-retro.md
+    outputs: action-plan
+
+outputs:
+  - user-test-script
+  - test-schedule
+  - test-insights
+  - action-plan

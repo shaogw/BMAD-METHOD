@@ -1,0 +1,46 @@
+# <!-- Powered by BMAD™ Core -->
+---
+template:
+  id: test-summary
+  name: Test Summary Template
+  version: 1.0
+  description: Consolidated report of usability test sessions and recommendations.
+  output:
+    format: markdown
+    filename: "test-insights.md"
+
+workflow:
+  elicitation: true
+  allow_skip: false
+
+sections:
+  - id: executive_summary
+    title: Executive Summary
+    instruction: |
+      Provide high-level findings, sentiment, and key recommendation headlines.
+    elicit: true
+  - id: participant_table
+    title: Participant Snapshot
+    instruction: |
+      Summarize participant demographics, segments, and notable context.
+    elicit: true
+  - id: findings
+    title: Findings by Task
+    instruction: |
+      For each task, capture what worked, what failed, supporting quotes, severity, and evidence.
+    elicit: true
+  - id: patterns
+    title: Patterns & Themes
+    instruction: |
+      Cluster observations into patterns and indicate confidence level.
+    elicit: true
+  - id: recommendations
+    title: Recommendations
+    instruction: |
+      Provide prioritized recommendations with owners, next steps, and success measures.
+    elicit: true
+  - id: decisions
+    title: Decisions & Next Bets
+    instruction: |
+      Document go/no-go decisions, further experiments, or follow-up research needs.
+    elicit: true

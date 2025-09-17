@@ -1,0 +1,46 @@
+# <!-- Powered by BMAD™ Core -->
+---
+template:
+  id: sprint-brief
+  name: Sprint Brief Template
+  version: 1.0
+  description: Structured brief capturing sprint challenge, goals, team, and logistics.
+  output:
+    format: markdown
+    filename: "sprint-brief.md"
+
+workflow:
+  elicitation: true
+  allow_skip: false
+
+sections:
+  - id: challenge
+    title: Sprint Challenge
+    instruction: |
+      Summarize the business challenge, target outcome, and why now.
+    elicit: true
+  - id: target_users
+    title: Target Users & Context
+    instruction: |
+      Describe primary user segments, scenarios, and relevant constraints.
+    elicit: true
+  - id: sprint_questions
+    title: Sprint Questions
+    instruction: |
+      List the critical questions or assumptions we must answer during the sprint.
+    elicit: true
+  - id: success_metrics
+    title: Success Metrics
+    instruction: |
+      Document leading and lagging indicators that define success for the sprint outcome.
+    elicit: true
+  - id: team_roster
+    title: Team Roster
+    instruction: |
+      Capture core team members, roles, availability, and backup contacts.
+    elicit: true
+  - id: logistics
+    title: Logistics & Constraints
+    instruction: |
+      Note location, schedule, tools, blockers, and pre-sprint dependencies.
+    elicit: true

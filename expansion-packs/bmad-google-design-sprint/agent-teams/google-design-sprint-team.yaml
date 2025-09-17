@@ -1,0 +1,16 @@
+# <!-- Powered by BMAD™ Core -->
+bundle:
+  name: Google Design Sprint Lab
+  icon: ⚡
+  description: Full agent roster and workflows for running Google Design Sprints end-to-end.
+agents:
+  - sprint-facilitator
+  - product-decider
+  - customer-insight-researcher
+  - solution-sketch-coach
+  - prototype-lead
+  - test-analyst
+workflows:
+  - google-design-sprint
+  - design-sprint-lite
+  - usability-test-day

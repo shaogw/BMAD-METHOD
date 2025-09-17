@@ -1,0 +1,11 @@
+# <!-- Powered by BMAD™ Core -->
+name: bmad-google-design-sprint
+version: 1.0.0
+short-title: Google Design Sprint Lab
+description: >-
+  Comprehensive facilitation kit for running Google Design Sprints with AI co-pilots
+  that shepherd teams through Understand, Diverge, Decide, Prototype, and Test phases.
+  Includes specialized agents, executable rituals, templates, checklists, and data
+  assets tuned for rapid product validation cycles.
+author: BMAD Contributors
+slashPrefix: bmad-gds

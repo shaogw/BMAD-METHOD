@@ -1,0 +1,41 @@
+# <!-- Powered by BMAD™ Core -->
+---
+template:
+  id: sketch-review
+  name: Sketch Review Template
+  version: 1.0
+  description: Structured critique capture for solution sketches.
+  output:
+    format: markdown
+    filename: "sketch-review-{{sketch_id | default('concept')}}.md"
+
+workflow:
+  elicitation: true
+  allow_skip: false
+
+sections:
+  - id: problem_statement
+    title: Problem Statement
+    instruction: |
+      Summarize the user problem this sketch addresses and why it matters.
+    elicit: true
+  - id: solution_overview
+    title: Solution Overview
+    instruction: |
+      Describe the core idea, key interactions, and differentiators.
+    elicit: true
+  - id: strengths
+    title: Strengths
+    instruction: |
+      Capture standout elements or wow moments with supporting rationale.
+    elicit: true
+  - id: risks
+    title: Risks & Questions
+    instruction: |
+      Document concerns, technical risks, or unanswered questions.
+    elicit: true
+  - id: next_steps
+    title: Next Steps
+    instruction: |
+      Outline improvements, mashup opportunities, or validation needed before selection.
+    elicit: true
