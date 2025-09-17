@@ -1,0 +1,48 @@
+# <!-- Powered by BMAD™ Core -->
+# Capability Map Template
+
+level1:
+  - id: L1-001
+    name: TBD
+    description: TBD
+    owner: TBD
+    criticality: High|Medium|Low
+    maturity: 1|2|3|4|5
+    target_maturity: 1|2|3|4|5
+    supporting_value_streams:
+      - TBD
+    level2:
+      - id: L2-001
+        name: TBD
+        description: TBD
+        enabling_systems:
+          - TBD
+        supporting_data:
+          - TBD
+        maturity: 1|2|3|4|5
+        target_maturity: 1|2|3|4|5
+        level3:
+          - id: L3-001
+            name: TBD
+            description: TBD
+            maturity: 1|2|3|4|5
+            target_maturity: 1|2|3|4|5
+            pain_points:
+              - TBD
+
+heatmap:
+  - capability_id: TBD
+    name: TBD
+    business_value: High|Medium|Low
+    maturity: 1|2|3|4|5
+    target_maturity: 1|2|3|4|5
+    risk_if_ignored: TBD
+    notes: TBD
+
+recommendations:
+  - priority: 1
+    capability_id: TBD
+    action: TBD
+    rationale: TBD
+    dependencies: TBD
+    estimated_timeline: TBD

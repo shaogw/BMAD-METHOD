@@ -1,0 +1,80 @@
+# <!-- Powered by BMAD™ Core -->
+# workflows/value-proposition-workshop.yaml
+name: value-proposition-workshop
+title: Value Proposition Synthesis Workshop
+description: |
+  Facilitated workshop workflow that converts problem insights into prioritized value
+  opportunities, hypotheses, and executive-ready recommendations.
+
+triggers:
+  - command: /bmad-ba value
+  - intent: "run value proposition workshop"
+
+inputs:
+  - problem_register
+  - capability_heatmap
+  - role_catalog
+
+agents:
+  - value-proposition
+  - problem-analysis
+  - capability-map
+
+steps:
+  - id: prework_alignment
+    title: Review problem register and readiness
+    agent: problem-analysis
+    inputs:
+      - problem_register
+      - capability_heatmap
+    uses: tasks/problem-priority-matrix.md
+    outputs:
+      - prioritized-problem-set
+
+  - id: opportunity_clustering
+    title: Cluster opportunities and map to segments
+    agent: value-proposition
+    inputs:
+      - prioritized-problem-set
+      - role_catalog
+    uses: tasks/value-proposition-workshop.md
+    outputs:
+      - value-opportunity-canvas
+
+  - id: capability_dependencies
+    title: Assess capability impacts and dependencies
+    agent: capability-map
+    inputs:
+      - value-opportunity-canvas
+      - capability_heatmap
+    uses: tasks/capability-assessment-workshop.md
+    outputs:
+      - capability-implications
+
+  - id: hypothesis_build
+    title: Draft value hypotheses and validation plan
+    agent: value-proposition
+    inputs:
+      - value-opportunity-canvas
+      - capability-implications
+    uses: tasks/value-proposition-workshop.md
+    outputs:
+      - value-hypotheses
+      - validation-plan
+
+  - id: exec_brief
+    title: Prepare executive brief and next steps
+    agent: value-proposition
+    inputs:
+      - value-hypotheses
+      - validation-plan
+    uses: docs/analyst-handoff-guide.md
+    outputs:
+      - recommendation-brief
+
+outputs:
+  - value-opportunity-canvas
+  - capability-implications
+  - value-hypotheses
+  - validation-plan
+  - recommendation-brief

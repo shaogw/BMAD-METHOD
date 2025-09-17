@@ -1,0 +1,47 @@
+# <!-- Powered by BMAD™ Core -->
+# Information Model Template
+
+entities:
+  - name: TBD
+    definition: TBD
+    primary_key: TBD
+    classification: Master|Reference|Transactional|Analytical
+    attributes:
+      - name: TBD
+        type: string|number|boolean|date|enum
+        description: TBD
+        source_system: TBD
+        quality_rules:
+          - rule: TBD
+            owner: TBD
+    relationships:
+      - type: one-to-many|many-to-many|one-to-one
+        target: TBD
+        business_rule: TBD
+        cardinality: TBD
+    lifecycle:
+      states:
+        - name: TBD
+          entry_condition: TBD
+          exit_condition: TBD
+          responsible_roles:
+            - role: TBD
+              RACI: R|A|C|I
+    stewardship:
+      - activity: Create|Read|Update|Delete
+        role: TBD
+        RACI: R|A|C|I
+
+integration_touchpoints:
+  - source_system: TBD
+    target_system: TBD
+    data_object: TBD
+    frequency: TBD
+    latency: TBD
+    notes: TBD
+
+open_questions:
+  - question: TBD
+    owner: TBD
+    due: TBD
+    notes: TBD

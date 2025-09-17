@@ -1,0 +1,19 @@
+# <!-- Powered by BMAD™ Core -->
+# Policy Tracker Reference
+
+policies:
+  - name: TBD
+    jurisdiction: National|Regional|Local|Corporate
+    effective_date: TBD
+    renewal_cycle: annual|biennial|ad-hoc
+    summary: TBD
+    impacted_processes:
+      - TBD
+    compliance_owner: TBD
+    documentation_link: TBD
+
+watchlist:
+  - name: TBD
+    monitoring_source: TBD
+    review_frequency: quarterly|semiannual|annual
+    notes: TBD

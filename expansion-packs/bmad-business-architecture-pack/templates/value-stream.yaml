@@ -1,0 +1,51 @@
+# <!-- Powered by BMAD™ Core -->
+# Value Stream Map Template
+
+stream:
+  name: TBD
+  trigger: TBD
+  outcome: TBD
+  customer: TBD
+  sponsoring_role: TBD
+
+stages:
+  - name: TBD
+    purpose: TBD
+    actors:
+      - role: TBD
+        RACI: R|A|C|I
+    activities:
+      - description: TBD
+        upstream_from: TBD
+        downstream_to: TBD
+    inputs:
+      - artifact: TBD
+        source: TBD
+    outputs:
+      - artifact: TBD
+        consumer: TBD
+    systems:
+      - TBD
+    data_objects:
+      - TBD
+    metrics:
+      - name: TBD
+        current_value: TBD
+        target: TBD
+    pain_points:
+      - severity: High|Medium|Low
+        issue: TBD
+        impact_metric: TBD
+
+information_flows:
+  - from_stage: TBD
+    to_stage: TBD
+    data_object: TBD
+    format: TBD
+    latency: TBD
+    issues: TBD
+
+validation_gaps:
+  - description: TBD
+    owner: TBD
+    due: TBD

@@ -1,0 +1,68 @@
+# <!-- Powered by BMAD™ Core -->
+# workflows/value-stream-focus.yaml
+name: value-stream-focus
+title: Value Stream & Capability Focus Sprint
+description: |
+  Condensed workflow for engagements that require rapid clarity on value streams,
+  supporting capabilities, and prioritized operational issues.
+
+triggers:
+  - command: /bmad-ba focus
+  - intent: "map value stream quickly"
+
+inputs:
+  - engagement_brief
+  - target_roles
+
+agents:
+  - domain-discovery
+  - value-stream
+  - capability-map
+  - problem-analysis
+
+steps:
+  - id: rapid_scope
+    title: Align on focal process and stakeholders
+    agent: domain-discovery
+    uses: tasks/domain-research-plan.md
+    outputs:
+      - mini-discovery-plan
+
+  - id: map_stream
+    title: Capture current state value stream
+    agent: value-stream
+    inputs:
+      - mini-discovery-plan
+      - target_roles
+    uses: tasks/value-stream-interview-guide.md
+    outputs:
+      - value-stream-map
+      - pain-point-log
+
+  - id: capability_snap
+    title: Link capabilities and assess maturity
+    agent: capability-map
+    inputs:
+      - value-stream-map
+    uses: tasks/capability-assessment-workshop.md
+    outputs:
+      - capability-map
+      - capability-heatmap
+
+  - id: problem_triage
+    title: Prioritize problems and quick wins
+    agent: problem-analysis
+    inputs:
+      - pain-point-log
+      - capability-heatmap
+    uses: tasks/problem-priority-matrix.md
+    outputs:
+      - problem-register
+      - quick-win-list
+
+outputs:
+  - mini-discovery-plan
+  - value-stream-map
+  - capability-map
+  - problem-register
+  - quick-win-list

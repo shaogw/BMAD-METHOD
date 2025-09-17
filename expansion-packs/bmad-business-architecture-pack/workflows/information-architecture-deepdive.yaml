@@ -1,0 +1,83 @@
+# <!-- Powered by BMAD™ Core -->
+# workflows/information-architecture-deepdive.yaml
+name: information-architecture-deepdive
+title: Information Architecture Deep Dive
+description: |
+  Focused workflow for engagements where data quality, governance, and information models
+  require accelerated attention.
+
+triggers:
+  - command: /bmad-ba info
+  - intent: "run information architecture deep dive"
+
+inputs:
+  - domain_scan
+  - system_landscape
+
+agents:
+  - information-structure
+  - glossary
+  - value-stream
+  - capability-map
+
+steps:
+  - id: scope_data_domain
+    title: Confirm data scope and stakeholders
+    agent: information-structure
+    inputs: domain_scan
+    uses: tasks/information-model-clinic.md
+    outputs:
+      - data-discovery-plan
+
+  - id: info_flow_review
+    title: Review value stream information flows
+    agent: value-stream
+    inputs:
+      - data-discovery-plan
+      - system_landscape
+    uses: tasks/value-stream-interview-guide.md
+    outputs:
+      - information-flows
+      - pain-point-log
+
+  - id: entity_modeling
+    title: Build canonical entity and lifecycle models
+    agent: information-structure
+    inputs:
+      - information-flows
+      - system_landscape
+    uses: tasks/information-model-clinic.md
+    outputs:
+      - information-model
+      - lifecycle-maps
+      - stewardship-matrix
+
+  - id: glossary_sync
+    title: Align terminology and document taxonomy
+    agent: glossary
+    inputs:
+      - information-model
+      - pain-point-log
+    uses: tasks/glossary-sprint.md
+    outputs:
+      - glossary
+      - document-types
+
+  - id: capability_implications
+    title: Update capability implications and risks
+    agent: capability-map
+    inputs:
+      - information-model
+      - glossary
+    uses: tasks/capability-assessment-workshop.md
+    outputs:
+      - capability-impacts
+      - data-risk-notes
+
+outputs:
+  - data-discovery-plan
+  - information-flows
+  - information-model
+  - glossary
+  - capability-impacts
+  - data-risk-notes

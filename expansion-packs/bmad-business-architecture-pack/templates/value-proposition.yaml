@@ -1,0 +1,48 @@
+# <!-- Powered by BMAD™ Core -->
+# Value Opportunity Canvas Template
+
+segments:
+  - name: TBD
+    jobs_to_be_done:
+      - TBD
+    pains:
+      - TBD
+    gains:
+      - TBD
+    enabling_capabilities:
+      - capability_id: TBD
+        name: TBD
+    priority: High|Medium|Low
+    adoption_risks:
+      - TBD
+
+proposed_initiatives:
+  - name: TBD
+    description: TBD
+    mapped_problems:
+      - problem_id: PR-001
+    differentiation: TBD
+    required_capabilities:
+      - capability_id: TBD
+    success_metrics:
+      - metric: TBD
+        target: TBD
+    validation_plan:
+      experiment_type: Interview|Prototype|Pilot|DataStudy
+      owner: TBD
+      next_milestone: TBD
+
+value_hypotheses:
+  - id: VH-001
+    statement: |
+      If we deliver ...
+    supporting_evidence:
+      - problem_id: PR-001
+      - capability_gap: TBD
+    leading_metrics:
+      - metric: TBD
+        target: TBD
+    validation_steps:
+      - action: TBD
+        due: TBD
+        owner: TBD

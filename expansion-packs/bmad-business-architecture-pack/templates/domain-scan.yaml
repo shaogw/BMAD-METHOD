@@ -1,0 +1,53 @@
+# <!-- Powered by BMAD™ Core -->
+# Domain Scan Template
+
+metadata:
+  client: TBD
+  domain_scope: TBD
+  analyst: TBD
+  last_updated: TBD
+
+overview:
+  summary: |
+    Provide a narrative overview of the business domain, including market context,
+    regulatory posture, and strategic drivers influencing transformation.
+  external_drivers:
+    - description: TBD
+      evidence: TBD
+  strategic_objectives:
+    - objective: TBD
+      source: TBD
+  boundary_interfaces:
+    - adjacent_domain: TBD
+      interaction_notes: TBD
+
+concept_model:
+  entities:
+    - name: TBD
+      description: TBD
+      notes: TBD
+  relationships:
+    - from: TBD
+      to: TBD
+      type: association|flow|dependency
+      notes: TBD
+  policies:
+    - reference: TBD
+      impact: TBD
+  external_systems:
+    - name: TBD
+      role: TBD
+      integration_notes: TBD
+
+research_backlog:
+  - item: TBD
+    owner: TBD
+    due: TBD
+    confidence: Low|Medium|High
+    status: Todo|InProgress|Complete
+    notes: TBD
+
+open_questions:
+  - question: TBD
+    data_needed: TBD
+    next_step: TBD

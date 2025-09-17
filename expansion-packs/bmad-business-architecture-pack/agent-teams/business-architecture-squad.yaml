@@ -1,0 +1,35 @@
+# <!-- Powered by BMAD™ Core -->
+team:
+  name: Business Architecture Squad
+  description: Cross-functional agent team delivering upstream business architecture
+    discovery and opportunity synthesis prior to product planning.
+  slashPrefix: /bmad-ba
+  agents:
+    - id: domain-discovery
+      path: ../agents/domain-discovery.md
+    - id: value-stream
+      path: ../agents/value-stream.md
+    - id: capability-map
+      path: ../agents/capability-map.md
+    - id: business-use-case
+      path: ../agents/business-use-case.md
+    - id: information-structure
+      path: ../agents/information-structure.md
+    - id: glossary
+      path: ../agents/glossary.md
+    - id: problem-analysis
+      path: ../agents/problem-analysis.md
+    - id: value-proposition
+      path: ../agents/value-proposition.md
+  workflows:
+    - ../workflows/discovery-sprint.yaml
+    - ../workflows/value-stream-focus.yaml
+    - ../workflows/information-architecture-deepdive.yaml
+    - ../workflows/value-proposition-workshop.yaml
+  handoff:
+    docs:
+      - ../docs/analyst-handoff-guide.md
+    templates:
+      - ../templates/value-proposition.yaml
+      - ../templates/problem-register.yaml
+      - ../templates/domain-scan.yaml
