@@ -1,0 +1,46 @@
+# <!-- Powered by BMAD™ Core -->
+---
+template:
+  id: prototype-plan
+  name: Prototype Plan Template
+  version: 1.0
+  description: Detailed prototype build plan covering scope, roles, assets, and checkpoints.
+  output:
+    format: markdown
+    filename: "prototype-plan.md"
+
+workflow:
+  elicitation: true
+  allow_skip: false
+
+sections:
+  - id: prototype_goal
+    title: Prototype Goal & Learning Objectives
+    instruction: |
+      Define what the prototype must prove, which questions it answers, and the target fidelity.
+    elicit: true
+  - id: scope_matrix
+    title: Scope Matrix
+    instruction: |
+      List storyboard frames or flows, include owner, assets required, dependencies, and definition of done.
+    elicit: true
+  - id: tooling
+    title: Tooling & Environments
+    instruction: |
+      Document tools, links, access needs, and integration approach.
+    elicit: true
+  - id: checkpoints
+    title: Checkpoints
+    instruction: |
+      Schedule standups, QA reviews, and readiness checks with owners.
+    elicit: true
+  - id: risks
+    title: Risks & Mitigations
+    instruction: |
+      Capture top risks, mitigation strategies, and contingency plans.
+    elicit: true
+  - id: test_alignment
+    title: Test Alignment
+    instruction: |
+      Map prototype flows to test script tasks and measurement plan.
+    elicit: true

@@ -1,0 +1,84 @@
+# <!-- Powered by BMAD™ Core -->
+---
+template:
+  id: storyboard
+  name: 10-Frame Storyboard Template
+  version: 1.0
+  description: Ten-frame storyboard capturing user journey, narration, assets, and ownership.
+  output:
+    format: markdown
+    filename: "storyboard.md"
+
+workflow:
+  elicitation: true
+  allow_skip: false
+
+sections:
+  - id: overview
+    title: Storyboard Overview
+    instruction: |
+      Summarize the scenario, user goal, and what success looks like for the storyboard.
+    elicit: true
+  - id: frames
+    title: Frames
+    subsections:
+      - id: frame1
+        title: Frame 1
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame2
+        title: Frame 2
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame3
+        title: Frame 3
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame4
+        title: Frame 4
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame5
+        title: Frame 5
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame6
+        title: Frame 6
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame7
+        title: Frame 7
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame8
+        title: Frame 8
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame9
+        title: Frame 9
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame10
+        title: Frame 10
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+  - id: risks
+    title: Risks & Contingencies
+    instruction: |
+      Capture assumptions, dependencies, or backup plans for the storyboard.
+    elicit: true
+  - id: test_alignment
+    title: Test Alignment
+    instruction: |
+      Outline how the storyboard maps to test script tasks and learning goals.
+    elicit: true

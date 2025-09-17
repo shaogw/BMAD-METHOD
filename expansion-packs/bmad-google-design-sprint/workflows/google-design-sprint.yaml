@@ -1,0 +1,148 @@
+# <!-- Powered by BMAD™ Core -->
+# workflows/google-design-sprint.yaml
+name: google-design-sprint
+title: Five-Day Google Design Sprint
+description: |
+  End-to-end workflow orchestrating Understand, Diverge, Decide, Prototype, and Test phases
+  using the Google Design Sprint Lab agents and rituals.
+
+triggers:
+  - command: /gds
+  - intent: "run google design sprint"
+
+inputs:
+  - product_challenge
+  - target_user
+  - success_metric
+
+agents:
+  - sprint-facilitator
+  - product-decider
+  - customer-insight-researcher
+  - solution-sketch-coach
+  - prototype-lead
+  - test-analyst
+
+steps:
+  - id: kickoff
+    title: Define sprint challenge
+    agent: sprint-facilitator
+    uses: tasks/define-sprint-challenge.md
+    outputs: sprint-challenge
+
+  - id: understand_interviews
+    title: Run expert interviews and synthesis
+    agent: customer-insight-researcher
+    inputs:
+      - sprint-challenge
+    uses: tasks/expert-interview-synth.md
+    outputs:
+      - expert-interview-log
+      - hmw-candidates
+
+  - id: cluster_hmw
+    title: Cluster How Might We statements
+    agent: customer-insight-researcher
+    inputs: hmw-candidates
+    uses: tasks/hmw-cluster.md
+    outputs: hmw-cluster-report
+
+  - id: lightning_demos
+    title: Conduct lightning demos
+    agent: solution-sketch-coach
+    inputs:
+      - hmw-cluster-report
+    uses: tasks/lightning-demo-roundup.md
+    outputs: lightning-demos
+
+  - id: crazy_eights
+    title: Facilitate Crazy Eights
+    agent: solution-sketch-coach
+    inputs:
+      - sprint-challenge
+      - lightning-demos
+    uses: tasks/crazy-eights-session.md
+    outputs: crazy-eights-notes
+
+  - id: sketch_critique
+    title: Review solution sketches
+    agent: solution-sketch-coach
+    inputs: crazy-eights-notes
+    uses: tasks/sketch-critique.md
+    outputs: sketch-critique-notes
+
+  - id: concept_selection
+    title: Select concept and capture rationale
+    agent: product-decider
+    inputs:
+      - sketch-critique-notes
+    uses: tasks/concept-pitch-selection.md
+    outputs: concept-selection
+
+  - id: storyboard
+    title: Build storyboard
+    agent: sprint-facilitator
+    inputs:
+      - concept-selection
+    uses: tasks/storyboard-build.md
+    outputs: storyboard
+
+  - id: prototype_scope
+    title: Scope prototype
+    agent: prototype-lead
+    inputs:
+      - storyboard
+    uses: tasks/prototype-scope-plan.md
+    outputs: prototype-plan
+
+  - id: build_day
+    title: Run prototype build standups
+    agent: sprint-facilitator
+    inputs:
+      - prototype-plan
+    uses: tasks/prototype-build-standup.md
+    outputs: prototype-standup-log
+
+  - id: test_script
+    title: Author usability test script
+    agent: test-analyst
+    inputs:
+      - prototype-plan
+      - storyboard
+    uses: tasks/user-test-script.md
+    outputs: user-test-script
+
+  - id: schedule_tests
+    title: Finalize test schedule
+    agent: sprint-facilitator
+    inputs:
+      - user-test-script
+    uses: tasks/test-schedule.md
+    outputs: test-schedule
+
+  - id: run_tests
+    title: Moderate usability tests and synthesize insights
+    agent: test-analyst
+    inputs:
+      - prototype-plan
+      - test-schedule
+      - user-test-script
+    uses: tasks/test-debrief.md
+    outputs: test-insights
+
+  - id: retro
+    title: Conduct sprint retrospective
+    agent: sprint-facilitator
+    inputs:
+      - test-insights
+      - prototype-plan
+    uses: tasks/post-sprint-retro.md
+    outputs: sprint-retro
+
+outputs:
+  - sprint-challenge
+  - storyboard
+  - prototype-plan
+  - user-test-script
+  - test-insights
+  - sprint-retro

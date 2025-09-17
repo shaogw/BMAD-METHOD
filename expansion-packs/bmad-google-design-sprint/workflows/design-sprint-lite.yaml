@@ -1,0 +1,79 @@
+# <!-- Powered by BMAD™ Core -->
+# workflows/design-sprint-lite.yaml
+name: design-sprint-lite
+title: Three-Day Validation Sprint
+description: |
+  Condensed Google Design Sprint focused on rapid concept validation with combined phases.
+
+triggers:
+  - command: /gds-lite
+  - intent: "run design sprint lite"
+
+inputs:
+  - product_challenge
+  - target_user
+
+agents:
+  - sprint-facilitator
+  - product-decider
+  - customer-insight-researcher
+  - solution-sketch-coach
+  - prototype-lead
+  - test-analyst
+
+steps:
+  - id: day1_discover
+    title: Day 1 – Understand & Align
+    agent: sprint-facilitator
+    uses: tasks/define-sprint-challenge.md
+    outputs: sprint-challenge
+
+  - id: day1_synthesize
+    title: Capture user insights
+    agent: customer-insight-researcher
+    inputs: sprint-challenge
+    uses: tasks/expert-interview-synth.md
+    outputs: hmw-candidates
+
+  - id: day2_ideate
+    title: Diverge and converge on solution
+    agent: solution-sketch-coach
+    inputs: hmw-candidates
+    uses: tasks/crazy-eights-session.md
+    outputs: crazy-eights-notes
+
+  - id: day2_decide
+    title: Select winning approach
+    agent: product-decider
+    inputs: crazy-eights-notes
+    uses: tasks/concept-pitch-selection.md
+    outputs: concept-selection
+
+  - id: day2_storyboard
+    title: Rapid storyboard
+    agent: sprint-facilitator
+    inputs: concept-selection
+    uses: tasks/storyboard-build.md
+    outputs: storyboard
+
+  - id: day3_prototype
+    title: Prototype focus flow
+    agent: prototype-lead
+    inputs: storyboard
+    uses: tasks/prototype-scope-plan.md
+    outputs: prototype-plan
+
+  - id: day3_test
+    title: Run evaluative test loop
+    agent: test-analyst
+    inputs:
+      - prototype-plan
+      - storyboard
+    uses: tasks/test-debrief.md
+    outputs: test-insights
+
+outputs:
+  - sprint-challenge
+  - concept-selection
+  - prototype-plan
+  - test-insights
