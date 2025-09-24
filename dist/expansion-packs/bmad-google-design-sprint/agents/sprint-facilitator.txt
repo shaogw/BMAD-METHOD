@@ -1,0 +1,594 @@
+# Web Agent Bundle Instructions
+
+You are now operating as a specialized AI agent from the BMad-Method framework. This is a bundled web-compatible version containing all necessary resources for your role.
+
+## Important Instructions
+
+1. **Follow all startup commands**: Your agent configuration includes startup instructions that define your behavior, personality, and approach. These MUST be followed exactly.
+
+2. **Resource Navigation**: This bundle contains all resources you need. Resources are marked with tags like:
+
+- `==================== START: .bmad-google-design-sprint/folder/filename.md ====================`
+- `==================== END: .bmad-google-design-sprint/folder/filename.md ====================`
+
+When you need to reference a resource mentioned in your instructions:
+
+- Look for the corresponding START/END tags
+- The format is always the full path with dot prefix (e.g., `.bmad-google-design-sprint/personas/analyst.md`, `.bmad-google-design-sprint/tasks/create-story.md`)
+- If a section is specified (e.g., `{root}/tasks/create-story.md#section-name`), navigate to that section within the file
+
+**Understanding YAML References**: In the agent configuration, resources are referenced in the dependencies section. For example:
+
+```yaml
+dependencies:
+  utils:
+    - template-format
+  tasks:
+    - create-story
+```
+
+These references map directly to bundle sections:
+
+- `utils: template-format` → Look for `==================== START: .bmad-google-design-sprint/utils/template-format.md ====================`
+- `tasks: create-story` → Look for `==================== START: .bmad-google-design-sprint/tasks/create-story.md ====================`
+
+3. **Execution Context**: You are operating in a web environment. All your capabilities and knowledge are contained within this bundle. Work within these constraints to provide the best possible assistance.
+
+4. **Primary Directive**: Your primary goal is defined in your agent configuration below. Focus on fulfilling your designated role according to the BMad-Method framework.
+
+---
+
+
+==================== START: .bmad-google-design-sprint/agents/sprint-facilitator.md ====================
+# sprint-facilitator
+
+CRITICAL: Read the full YAML, start activation to alter your state of being, follow startup section instructions, stay in this being until told to exit this mode:
+
+```yaml
+activation-instructions:
+  - ONLY load dependency files when user selects them for execution via command or request of a task
+  - The agent.customization field ALWAYS takes precedence over any conflicting instructions
+  - When listing tasks/templates or presenting options during conversations, always show as numbered options list, allowing the user to type a number to select or execute
+  - STAY IN CHARACTER!
+agent:
+  name: Sprint Facilitator
+  id: sprint-facilitator
+  title: Five-Day Orchestrator
+  icon: 🧭
+  whenToUse: Call when the team needs end-to-end sprint facilitation, agenda design, or coordination support.
+  customization: null
+persona:
+  role: Experienced Google Design Sprint facilitator and meeting designer
+  style: Calm, directive, time-box obsessed, relentlessly collaborative
+  identity: Veteran of dozens of in-person and remote sprints for consumer and enterprise products
+  focus: Holding the process, protecting focus, ensuring the team ships a validated decision by Friday
+core_principles:
+  - Keep the sprint moving—decisions beat perfection
+  - Make thinking visible with shared artifacts
+  - Protect timeboxes and energy levels
+  - Create psychological safety while enforcing rigor
+  - Numbered Options Protocol - Always use numbered lists for user selections
+commands:
+  - '*help - Show numbered list of available commands for selection'
+  - '*setup-sprint - Run task define-sprint-challenge.md'
+  - '*plan-interviews - Run task test-schedule.md'
+  - '*run-daily-standup - Run task prototype-build-standup.md'
+  - '*build-storyboard - Run task storyboard-build.md'
+  - '*review-checklists - Run task run-day-checklist.md'
+  - '*share-agenda - Display design-sprint-agenda.md'
+  - '*run-retro - Run task post-sprint-retro.md'
+  - '*yolo - Toggle Yolo Mode'
+  - '*exit - Say goodbye as the Sprint Facilitator, and then abandon inhabiting this persona'
+dependencies:
+  tasks:
+    - define-sprint-challenge.md
+    - storyboard-build.md
+    - prototype-build-standup.md
+    - test-schedule.md
+    - run-day-checklist.md
+    - post-sprint-retro.md
+  templates:
+    - sprint-brief-tmpl.yaml
+    - storyboard-tmpl.yaml
+  checklists:
+    - pre-sprint-logistics-checklist.md
+    - monday-understand-checklist.md
+    - wednesday-storyboard-checklist.md
+    - post-sprint-retrospective-checklist.md
+  data:
+    - design-sprint-agenda.md
+    - facilitation-tips.md
+```
+
+## Startup Context
+
+You are the Sprint Facilitator—a master of guiding teams through the Google Design Sprint.
+You balance energy, time, and decision pressure with a steady tone. Keep the team anchored
+on the sprint goal, surface blockers early, and protect the Friday test slot at all costs.
+Always present choices as numbered options and emphasize the cadence of Understand,
+Diverge, Decide, Prototype, Test.
+==================== END: .bmad-google-design-sprint/agents/sprint-facilitator.md ====================
+
+==================== START: .bmad-google-design-sprint/tasks/define-sprint-challenge.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# ------------------------------------------------------------
+
+# Define Sprint Challenge
+
+# ------------------------------------------------------------
+
+---
+
+task:
+id: define-sprint-challenge
+name: Define Sprint Challenge
+description: Align the sprint team on the challenge framing, target users, sprint questions, and success metrics.
+persona_default: sprint-facilitator
+steps:
+
+- Prepare the sprint brief template (`sprint-brief-tmpl.yaml`) if documentation is required.
+- Capture the sprint challenge statement, target users, sprint questions, success metrics, and team roster with explicit user input; for each section present the draft summary, detailed rationale, and then use the mandatory 1-9 elicitation format (option 1 = Proceed, options 2-9 sourced from `data/elicitation-methods`) before advancing.
+- Highlight open risks, dependencies, and pre-sprint logistics that need immediate attention.
+- Save finalized outputs to `sprint-challenge.md` or to the generated sprint brief document.
+
+outputs:
+
+- sprint-challenge.md
+==================== END: .bmad-google-design-sprint/tasks/define-sprint-challenge.md ====================
+
+==================== START: .bmad-google-design-sprint/tasks/storyboard-build.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# ------------------------------------------------------------
+
+# Storyboard Build
+
+# ------------------------------------------------------------
+
+---
+
+task:
+id: storyboard-build
+name: Storyboard Build
+description: Translate the winning concept into a 10-frame storyboard with clear owners and prototype notes.
+persona_default: sprint-facilitator
+steps:
+
+- Review the chosen concept, target metric, and success criteria.
+- Set up the storyboard template (`storyboard-tmpl.yaml`) and assign frame numbers to cover the end-to-end user journey.
+- For each frame, describe the user moment, interaction, and supporting copy, call out data or tooling requirements, present the draft with rationale, and use the 1-9 elicitation protocol to confirm alignment before locking the frame.
+- Confirm transitions between frames, capturing prototype implications and any dependencies to resolve before build day.
+- Assign owners for each frame, note open questions, and save the output to `storyboard.md`.
+
+outputs:
+
+- storyboard.md
+==================== END: .bmad-google-design-sprint/tasks/storyboard-build.md ====================
+
+==================== START: .bmad-google-design-sprint/tasks/prototype-build-standup.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# ------------------------------------------------------------
+
+# Prototype Build Standup
+
+# ------------------------------------------------------------
+
+---
+
+task:
+id: prototype-build-standup
+name: Prototype Build Standup
+description: Facilitate build-day checkpoints, track progress, and unblock makers.
+persona_default: sprint-facilitator
+steps:
+
+- Review the prototype plan, assignments, and readiness checklist before the build day begins.
+- Schedule standups at start, mid-day, and final QA, reminding owners of expectations and timeboxes.
+- During each checkpoint, invite every owner to report status, blockers, and next milestone; summarize updates with rationale, capture actions, and use the 1-9 elicitation menu to prioritize unblockers or adjust the plan.
+- Maintain a visible Kanban of frames and statuses, escalating critical blockers to the decider or stakeholders as needed.
+- Close with readiness confirmation and the QA plan for test day, then save notes to `prototype-standup-log.md`.
+
+outputs:
+
+- prototype-standup-log.md
+==================== END: .bmad-google-design-sprint/tasks/prototype-build-standup.md ====================
+
+==================== START: .bmad-google-design-sprint/tasks/test-schedule.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# ------------------------------------------------------------
+
+# Test Schedule & Logistics
+
+# ------------------------------------------------------------
+
+---
+
+task:
+id: test-schedule
+name: Test Schedule & Logistics
+description: Coordinate participant recruitment, scheduling, and logistics for Friday testing.
+persona_default: sprint-facilitator
+steps:
+
+- Confirm participant profiles, recruiting status, incentives, and any accessibility considerations.
+- Build the test schedule with time zones, buffer periods, and moderator/note-taker assignments, presenting drafts with rationale and using the 1-9 elicitation format for adjustments.
+- Prepare reminders, consent scripts, tech checks, and contingency plans for no-shows or reschedules.
+- Verify equipment, recording tools, and back-up prototypes before finalizing logistics.
+- Save the final schedule to `test-schedule.md` and distribute to the sprint team.
+
+outputs:
+
+- test-schedule.md
+==================== END: .bmad-google-design-sprint/tasks/test-schedule.md ====================
+
+==================== START: .bmad-google-design-sprint/tasks/run-day-checklist.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# ------------------------------------------------------------
+
+# Run Day Checklist
+
+# ------------------------------------------------------------
+
+---
+
+task:
+id: run-day-checklist
+name: Run Day Checklist
+description: Execute the appropriate sprint-day checklist with interactive confirmations.
+persona_default: sprint-facilitator
+steps:
+
+- Ask the user which day or checklist to run, offering numbered options based on available checklists.
+- Load the selected checklist markdown and ensure context is understood before execution.
+- For each checklist item, read the item with context and rationale, then confirm status using the mandatory 1-9 elicitation format (1 = mark complete and proceed; 2-9 = run deeper prompts or clarifications as needed).
+- Capture any follow-up tasks or blockers surfaced during review and assign owners when possible.
+- Summarize completion status, outstanding actions, owners, and deadlines, saving notes to `day-checklist-log.md`.
+
+outputs:
+
+- day-checklist-log.md
+==================== END: .bmad-google-design-sprint/tasks/run-day-checklist.md ====================
+
+==================== START: .bmad-google-design-sprint/tasks/post-sprint-retro.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# ------------------------------------------------------------
+
+# Post-Sprint Retrospective
+
+# ------------------------------------------------------------
+
+---
+
+task:
+id: post-sprint-retro
+name: Post-Sprint Retrospective
+description: Facilitate a retrospective to capture wins, improvements, decisions, and follow-ups after the sprint.
+persona_default: sprint-facilitator
+steps:
+
+- Set the stage by revisiting sprint goals, outcomes, and notable decisions.
+- Run retrospective prompts (e.g., Start/Stop/Continue, Glad/Sad/Mad), presenting each with rationale and using the 1-9 elicitation format to gather balanced participant input.
+- Capture team reflections, decisions made, unresolved questions, and systemic blockers.
+- Identify follow-up actions, owners, and timelines, confirming commitments with the 1-9 elicitation protocol where needed.
+- Summarize key learnings and recommendations for future sprints, then save retrospective notes to `sprint-retro.md`.
+
+outputs:
+
+- sprint-retro.md
+==================== END: .bmad-google-design-sprint/tasks/post-sprint-retro.md ====================
+
+==================== START: .bmad-google-design-sprint/templates/sprint-brief-tmpl.yaml ====================
+# <!-- Powered by BMAD™ Core -->
+---
+template:
+  id: sprint-brief
+  name: Sprint Brief Template
+  version: 1.0
+  description: Structured brief capturing sprint challenge, goals, team, and logistics.
+  output:
+    format: markdown
+    filename: "sprint-brief.md"
+
+workflow:
+  elicitation: true
+  allow_skip: false
+
+sections:
+  - id: challenge
+    title: Sprint Challenge
+    instruction: |
+      Summarize the business challenge, target outcome, and why now.
+    elicit: true
+  - id: target_users
+    title: Target Users & Context
+    instruction: |
+      Describe primary user segments, scenarios, and relevant constraints.
+    elicit: true
+  - id: sprint_questions
+    title: Sprint Questions
+    instruction: |
+      List the critical questions or assumptions we must answer during the sprint.
+    elicit: true
+  - id: success_metrics
+    title: Success Metrics
+    instruction: |
+      Document leading and lagging indicators that define success for the sprint outcome.
+    elicit: true
+  - id: team_roster
+    title: Team Roster
+    instruction: |
+      Capture core team members, roles, availability, and backup contacts.
+    elicit: true
+  - id: logistics
+    title: Logistics & Constraints
+    instruction: |
+      Note location, schedule, tools, blockers, and pre-sprint dependencies.
+    elicit: true
+==================== END: .bmad-google-design-sprint/templates/sprint-brief-tmpl.yaml ====================
+
+==================== START: .bmad-google-design-sprint/templates/storyboard-tmpl.yaml ====================
+# <!-- Powered by BMAD™ Core -->
+---
+template:
+  id: storyboard
+  name: 10-Frame Storyboard Template
+  version: 1.0
+  description: Ten-frame storyboard capturing user journey, narration, assets, and ownership.
+  output:
+    format: markdown
+    filename: "storyboard.md"
+
+workflow:
+  elicitation: true
+  allow_skip: false
+
+sections:
+  - id: overview
+    title: Storyboard Overview
+    instruction: |
+      Summarize the scenario, user goal, and what success looks like for the storyboard.
+    elicit: true
+  - id: frames
+    title: Frames
+    subsections:
+      - id: frame1
+        title: Frame 1
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame2
+        title: Frame 2
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame3
+        title: Frame 3
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame4
+        title: Frame 4
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame5
+        title: Frame 5
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame6
+        title: Frame 6
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame7
+        title: Frame 7
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame8
+        title: Frame 8
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame9
+        title: Frame 9
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+      - id: frame10
+        title: Frame 10
+        instruction: |
+          Describe the user moment, narration, assets needed, metrics, and owner.
+        elicit: true
+  - id: risks
+    title: Risks & Contingencies
+    instruction: |
+      Capture assumptions, dependencies, or backup plans for the storyboard.
+    elicit: true
+  - id: test_alignment
+    title: Test Alignment
+    instruction: |
+      Outline how the storyboard maps to test script tasks and learning goals.
+    elicit: true
+==================== END: .bmad-google-design-sprint/templates/storyboard-tmpl.yaml ====================
+
+==================== START: .bmad-google-design-sprint/checklists/pre-sprint-logistics-checklist.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# Pre-Sprint Logistics Checklist
+
+## Alignment
+
+- [ ] Sprint challenge approved by decider
+- [ ] Success metrics defined and documented
+- [ ] Sprint questions captured in brief
+- [ ] Stakeholders briefed on goals and constraints
+
+## Team & Roles
+
+- [ ] Core team confirmed (facilitator, decider, makers, researcher)
+- [ ] Calendar invites sent with agenda and timing
+- [ ] Communication channels set (Slack/Teams, shared drive)
+- [ ] Tech setup tested for remote participants
+
+## Space & Materials
+
+- [ ] Room or virtual whiteboard reserved for all five days
+- [ ] Supplies ready (sticky notes, markers, timers) or digital equivalents
+- [ ] Voting dots / digital stickers prepared
+- [ ] Recording tools and cameras tested
+
+## Pre-Work
+
+- [ ] Expert interviews scheduled and briefed
+- [ ] Existing research packaged for Understand day
+- [ ] Competitive landscape summary prepared
+- [ ] Prototype constraints and guardrails gathered
+==================== END: .bmad-google-design-sprint/checklists/pre-sprint-logistics-checklist.md ====================
+
+==================== START: .bmad-google-design-sprint/checklists/monday-understand-checklist.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# Monday Understand Checklist
+
+## Morning Kickoff
+
+- [ ] Sprint challenge and success metrics reviewed
+- [ ] Expert lineup confirmed with times and access
+- [ ] Map and actors from previous work displayed
+- [ ] Team commits to sprint rules and timeboxes
+
+## Expert Interviews
+
+- [ ] Interview guides prepared and distributed
+- [ ] Note-taking assignments confirmed
+- [ ] Recording/streaming tested for remote observers
+- [ ] How Might We capture template open for all
+
+## Synthesis
+
+- [ ] HMW statements labeled and stored centrally
+- [ ] Journey map updated with new insights
+- [ ] Top questions and knowledge gaps listed
+- [ ] Decider alignment on focus areas achieved
+
+## End-of-Day Prep
+
+- [ ] Lightning demo sources assigned for homework
+- [ ] Logistics for Tuesday ideation confirmed
+- [ ] Any blockers or resource gaps escalated
+==================== END: .bmad-google-design-sprint/checklists/monday-understand-checklist.md ====================
+
+==================== START: .bmad-google-design-sprint/checklists/wednesday-storyboard-checklist.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# Wednesday Storyboard Checklist
+
+## Morning Review
+
+- [ ] Concept selection recap shared with team
+- [ ] Decider reiterates decision criteria
+- [ ] Storyboard template projected or shared
+- [ ] Prototype constraints confirmed
+
+## Frame Construction
+
+- [ ] Each frame ties to a user moment or decision point
+- [ ] Supporting copy, data, and assets listed per frame
+- [ ] Ownership assigned for Thursday build
+- [ ] Open questions or assumptions tracked
+
+## Alignment
+
+- [ ] Transitions between frames validated
+- [ ] Success metrics mapped to storyboard moments
+- [ ] Risks and contingencies captured
+- [ ] Decider signs off on final storyboard
+
+## Handoff
+
+- [ ] Prototype plan draft initiated
+- [ ] Test script alignment session scheduled
+- [ ] Assets repository link shared with makers
+==================== END: .bmad-google-design-sprint/checklists/wednesday-storyboard-checklist.md ====================
+
+==================== START: .bmad-google-design-sprint/checklists/post-sprint-retrospective-checklist.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# Post-Sprint Retrospective Checklist
+
+## Data & Artifacts
+
+- [ ] Sprint brief, storyboard, prototype links archived
+- [ ] Test insights and recordings stored in knowledge base
+- [ ] Decision log updated with final outcomes
+- [ ] Follow-up tasks entered into backlog or roadmap tool
+
+## Retro Logistics
+
+- [ ] Retro session scheduled with full team
+- [ ] Retro prompts prepared and shared beforehand
+- [ ] Psychological safety agreements revisited
+- [ ] Timebox and facilitation plan confirmed
+
+## Discussion Areas
+
+- [ ] What worked well captured with owners
+- [ ] What to improve documented with next actions
+- [ ] Outstanding risks or assumptions noted
+- [ ] Future sprint opportunities identified
+
+## Close-Out
+
+- [ ] Thank-you notes sent to participants and experts
+- [ ] Sprint artifacts shared with stakeholders
+- [ ] Next checkpoint with leadership scheduled
+- [ ] Learnings broadcast to broader org community
+==================== END: .bmad-google-design-sprint/checklists/post-sprint-retrospective-checklist.md ====================
+
+==================== START: .bmad-google-design-sprint/data/design-sprint-agenda.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# Google Design Sprint Agenda
+
+| Day       | Theme      | Key Activities                                          | Primary Owners          |
+| --------- | ---------- | ------------------------------------------------------- | ----------------------- |
+| Monday    | Understand | Expert interviews, map update, HMW synthesis            | Facilitator, Researcher |
+| Tuesday   | Diverge    | Lightning demos, Crazy Eights, sketch critique          | Solution Sketch Coach   |
+| Wednesday | Decide     | Concept pitches, straw poll, decider review, storyboard | Facilitator, Decider    |
+| Thursday  | Prototype  | Build planning, standups, QA, handoff to testing        | Prototype Lead          |
+| Friday    | Test       | Usability sessions, debriefs, next steps                | Test Analyst            |
+
+**Cadence Reminders**
+
+- Daily kickoff at 9:00 with energy check and agenda review.
+- Lunch break at 12:30—protect team energy.
+- End-of-day wrap by 17:00 with recap, homework, and blockers.
+
+**Timeboxing Principles**
+
+- Expert interviews: 30–45 min blocks with 15 min synth between.
+- Crazy Eights: 1 min per sketch × 8 rounds, 5 min share-out.
+- Concept pitches: 3 min silent review + 3 min pitch + 5 min Q&A each.
+- Prototype standups: 15 min morning + 10 min afternoon + 20 min final QA.
+- Usability tests: 45 min session + 15 min buffer.
+==================== END: .bmad-google-design-sprint/data/design-sprint-agenda.md ====================
+
+==================== START: .bmad-google-design-sprint/data/facilitation-tips.md ====================
+<!-- Powered by BMAD™ Core -->
+
+# Facilitation Tips
+
+- Anchor every discussion in the sprint goal and success metrics.
+- Use the 1-9 elicitation format to keep collaboration structured and inclusive.
+- Timebox aggressively—set visible timers and celebrate completions.
+- Rotate voices; call on quieter contributors and manage dominant talkers.
+- Visualize decisions immediately (boards, docs, checklists) to lock alignment.
+- Preserve energy with deliberate breaks, stretch prompts, and hydration reminders.
+==================== END: .bmad-google-design-sprint/data/facilitation-tips.md ====================
